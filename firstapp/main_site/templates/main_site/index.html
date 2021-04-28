@@ -1,0 +1,27 @@
+{% extends 'main_site/pattern.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>HOME Page</h1>
+    {% if description %}
+        {% for el in description %}
+            <div class="alert alert-warning mt-2">
+                <div class="media">
+                    <img class="rounded-cirlce account-img" src="{{ el.user.profile.photo.url }}">
+                    <div class="media-body">
+                        <h2 class="acocunt-heading">{{ el.user }}</h2>
+                        <p class="text-secondary">{{ user.email }}</p>
+                        <p class="text-secondary">{{ el.date_time }}</p>
+                    </div>
+                </div>
+                <h3><a class="article-title" href="{% url 'table-detail' el.id %}"> {{ el.title }}</a></h3>
+                <p>{{ el.text }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3><b>There's no posts yet</b></h3>
+    {% endif %}
+{% endblock %}

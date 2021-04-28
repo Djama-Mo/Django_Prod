@@ -1,0 +1,26 @@
+{% extends 'main_site/pattern.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-warning mt-2">
+        <div class="media">
+            <img class="rounded-cirlce account-img" src="{{ object.user.profile.photo.url }}">
+            <div class="media-body">
+                <h2 class="acocunt-heading">{{ object.user }}</h2>
+                <p class="text-secondary">{{ object.user.email }}</p>
+                <p class="text-secondary">{{ object.date_time }}</p>
+            </div>
+            <div>
+                {% if object.user == user %}
+                    <a class="btn btn-outline-secondary" href="{% url 'table-update' object.id %}">Edit</a>
+                    <a class="btn btn-outline-danger" href="{% url 'table-delete' object.id %}">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+        <h3>{{ object.title }}</h3>
+        <p>{{ object.text }}</p>
+    </div>
+{% endblock %}

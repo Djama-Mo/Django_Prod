@@ -1,0 +1,7 @@
+venv/
+*.png
+*.jpg
+*.sqlite3
+.envrc
+.idea
+__pycache__
